@@ -159,7 +159,7 @@ def _upsert_manifest(entry: dict):
     else:
         _create_json_file(name, DRIVE_FOLDER_ID, manifest)
 
-ffrom fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(
     title="IronLog Logs API",
@@ -276,4 +276,5 @@ def fetch_log(
     existing = _find_file_by_name_in_folder(filename, DRIVE_FOLDER_ID)
     if not existing: raise HTTPException(404, f"No log for {date}")
     return _read_json_file(existing["id"])
+
 
